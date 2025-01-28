@@ -65,3 +65,13 @@ npx sequelize init
 > 6. Setup your config/config.json file for developement database.
 
 > 7. Run `npx sequelize db:create` command to create your databse.
+
+> 8. To create a new model we use 
+
+> ```npx sequelize-cli model:generate --name <ModelName> --attributes <Column name>:<Datatype>```
+
+> 9. After creating your models you need to migrate model/tables
+
+```
+npx sequelize-cli db:migrate
+```
