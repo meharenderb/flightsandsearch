@@ -104,10 +104,31 @@ const getAll = async (req, res) => {
     }
 }
 
+const createCities = async (req, res) => {
+    try {        
+        const cities = await cityService.createCities(req.body);
+        return res.status(201).json({
+            data: cities,
+            status: true,
+            message: 'Successfully created cities.',
+            err: {}
+        })
+    } catch (error) {
+        console.error('Something went wrong in the controller layer');
+        return res.status(500).json({
+            data: {},
+            status: false,
+            message: 'Not able to create cities.',
+            err: error
+        })
+    }
+}
+
 module.exports = {
 	create,
 	update,
 	destroy,
 	get,
-    getAll
+    getAll,
+    createCities,
 };
