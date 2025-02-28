@@ -88,3 +88,34 @@ npx sequelize-cli db:migrate
 ```
 npx sequelize-cli seed:generate --name airport-seeder
 ```
+
+## Tables
+### Airplane => modelNumber:String, capacity:Integer
+
+```
+npx sequelize-cli model:generate --name Airplane --attributes modelNumber:String,capacity:integer
+```
+
+```
+npx sequelize-cli seed:generate --name add-airplane
+```
+
+```
+npx sequelize-cli db:seed --seed your_filename.js
+```
+
+
+## Tables
+### Flights => modelNumber:String, capacity:Integer
+
+```
+npx sequelize-cli model:generate --name Flight --attributes flightNumber:String,airplaneId:integer,departureAirportId:integer,arrivalAirportId:integer,departureTime:Date,arrivalTime:Date,price:integer,totalSeats:integer
+```
+
+```
+npx sequelize-cli seed:generate --name add-flights
+```
+
+```
+npx sequelize-cli db:seed --seed your_filename.js
+```
