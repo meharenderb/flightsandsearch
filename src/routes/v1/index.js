@@ -33,5 +33,7 @@ router.get('/airplane', airplaneController.getAllAirplanes);
 // Flight Routes
 router.post('/flight', compareTime, flightController.createFlight);
 router.post('/flights', flightController.getAllFlights);
+router.get('/flights/:id', flightController.getFlightById);
+router.patch('/flights/:id', flightController.updateFlightSeatsAvailability);
 
 module.exports = router;

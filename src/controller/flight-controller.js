@@ -54,7 +54,51 @@ const getAllFlights = async (req, res) => {
     }
 }
 
+const getFlightById = async (req, res) => {
+    try {
+        const flight = await flightService.getFlightById(req.params.id);
+
+        return res.status(201).json({
+            status: true,
+            message: 'Successfully fetched a flight.',
+            data: flight,
+            err: {}
+        })
+    } catch (error) {
+        console.error('Something went wrong in the controller layer',error);
+        return res.status(500).json({
+            status: false,
+            message: 'Not able to fetch a flight.',
+            data: {},
+            err: error?.message
+        })
+    }
+}
+
+const updateFlightSeatsAvailability = async (req, res) => {
+    try {
+        const flight = await flightService.updateFlightSeatsAvailability(req.params.id, req.body);
+
+        return res.status(201).json({
+            status: true,
+            message: 'Successfully updated flight seats availability',
+            data: flight,
+            err: {}
+        })
+    } catch (error) {
+        console.error('Something went wrong in the controller layer',error);
+        return res.status(500).json({
+            status: false,
+            message: 'Not able to update flight seats availability.',
+            data: {},
+            err: error?.message
+        })
+    }
+}
+
 module.exports = {
     createFlight,
-    getAllFlights
+    getAllFlights,
+    getFlightById,
+    updateFlightSeatsAvailability
 }
